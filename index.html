@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Amasador | Delivery de Empanadas y Panes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="nav-logo" id="logo-home">
+        <i class="fas fa-dumpling"></i> AMASADOR
+    </div>
+    <div class="nav-icons">
+        <button class="cart-btn" id="cart-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+        <button class="admin-btn" id="admin-btn">
+            <i class="fas fa-chart-line"></i>
+        </button>
+    </div>
+</nav>
+
+<main class="contenedor-principal">
+    
+    <!-- SECCIÓN TIENDA -->
+    <section id="seccion-tienda" class="seccion-contenido active">
+        <div class="hero">
+            <h1>🥟 Los mejores productos artesanales</h1>
+            <p>Hechos con amor y los mejores ingredientes, directo a tu casa</p>
+        </div>
+        
+        <div class="filtros">
+            <button class="filtro-btn active" data-categoria="todos">Todos</button>
+            <button class="filtro-btn" data-categoria="empanadas">Empanadas</button>
+            <button class="filtro-btn" data-categoria="panes">Panes</button>
+            <button class="filtro-btn" data-categoria="postres">Postres</button>
+            <button class="filtro-btn" data-categoria="combos">Combos</button>
+        </div>
+        
+        <div id="productos-grid" class="productos-grid"></div>
+    </section>
+    
+    <!-- SECCIÓN CARRITO -->
+    <section id="seccion-carrito" class="seccion-contenido">
+        <div class="card-carrito">
+            <div class="carrito-header">
+                <h2><i class="fas fa-shopping-bag"></i> Tu pedido</h2>
+                <button class="close-carrito" id="close-carrito"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="carrito-items" class="carrito-items">
+                <div class="carrito-vacio">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Tu carrito está vacío</p>
+                    <button class="btn-seguir-comprando" id="seguir-comprando">Seguir comprando</button>
+                </div>
+            </div>
+            <div class="carrito-resumen">
+                <div class="resumen-linea">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">S/ 0.00</span>
+                </div>
+                <div class="resumen-linea">
+                    <span>Delivery:</span>
+                    <span id="delivery">S/ 5.00</span>
+                </div>
+                <div class="resumen-linea total">
+                    <span>Total:</span>
+                    <span id="total-carrito">S/ 0.00</span>
+                </div>
+            </div>
+            
+            <form id="formulario-cliente" class="formulario-cliente">
+                <h3><i class="fas fa-user"></i> Datos de envío</h3>
+                <div class="campo">
+                    <input type="text" id="cliente-nombre" placeholder="Nombre completo" required>
+                </div>
+                <div class="campo">
+                    <input type="text" id="cliente-direccion" placeholder="Dirección de entrega" required>
+                </div>
+                <div class="campo">
+                    <input type="tel" id="cliente-telefono" placeholder="Teléfono / WhatsApp" required>
+                </div>
+                <div class="campo">
+                    <textarea id="cliente-notas" placeholder="Notas adicionales" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn-confirmar" id="btn-confirmar">
+                    <i class="fas fa-check-circle"></i> Confirmar pedido
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- SECCIÓN ADMIN -->
+    <section id="seccion-admin" class="seccion-contenido">
+        <div class="card card-wide">
+            <header class="card-header-flex">
+                <h2><i class="fas fa-clipboard-list"></i> Pedidos recibidos</h2>
+                <button class="btn-secondary" id="btn-refrescar">
+                    <i class="fas fa-sync-alt"></i> Refrescar
+                </button>
+            </header>
+            <div id="tarjetas-pedidos" class="tarjetas-grid">
+                <div class="cargando-tarjetas">Cargando pedidos...</div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="modal-exito" class="modal">
+    <div class="modal-contenido">
+        <i class="fas fa-check-circle" style="font-size: 60px; color: #27ae60;"></i>
+        <h3>¡Pedido recibido!</h3>
+        <p>Gracias por tu compra. En breve nos comunicaremos contigo.</p>
+        <button id="cerrar-modal">Seguir comprando</button>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
