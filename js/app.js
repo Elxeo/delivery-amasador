@@ -111,16 +111,20 @@ function actualizarCarritoUI() {
     `).join('');
 }
 
-// Renderizar productos
+// Renderizar productos (versión corregida)
 function renderizarProductos() {
-    const filtrados = filtroActual === 'todos' ? productos : productos.filter(p => p.categoria === filtroActual);
-    
+    const filtrados = filtroActual === 'todos'
+        ? productos
+        : productos.filter(p => p.categoria === filtroActual);
+
     productosGrid.innerHTML = filtrados.map(producto => {
-        const onError = `this.style.display='none'; this.parentElement.innerHTML='<span style="font-size:4rem">${producto.icono}</span>'`;
+        // Escapamos el icono para evitar comillas problemáticas
+        const iconoSeguro = producto.icono ? producto.icono.replace(/'/g, "\\'") : '';
         return `
             <div class="tarjeta-producto">
                 <div class="producto-imagen">
-                    <img src="${producto.imagen}" alt="${producto.nombre}" onerror="${onError}">
+                    <img src="${producto.imagen}" alt="${producto.nombre}"
+                         onerror="manejarErrorImagen(this, '${iconoSeguro}')">
                 </div>
                 <div class="producto-info">
                     <h3 class="producto-nombre">${producto.nombre}</h3>
