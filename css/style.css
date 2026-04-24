@@ -16,16 +16,17 @@
 * { box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+    font-family: 'Sniglet', 'Segoe UI', 'Poppins', system-ui, sans-serif;
     margin: 0;
     background: linear-gradient(135deg, var(--crema) 0%, #f0e4d0 100%);
     min-height: 100vh;
     color: var(--marron-oscuro);
 }
 
+/* Navbar - más ancho y menos pegado a bordes */
 .navbar {
     background: linear-gradient(135deg, var(--marron-oscuro) 0%, var(--marron-medio) 100%);
-    padding: 1rem 5%;
+    padding: 1rem 6%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,16 +34,31 @@ body {
     top: 0;
     z-index: 100;
     box-shadow: var(--sombra);
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
+/* Logo más grande: 3rem en desktop */
 .nav-logo {
     color: var(--naranja);
     font-weight: bold;
-    font-size: 1.6rem;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+}
+
+.logo-texto {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+.slogan {
+    font-size: 0.9rem;
+    font-weight: normal;
+    font-style: italic;          /* Cursiva */
+    letter-spacing: 1px;
+    color: var(--crema);
+    text-transform: none;
+    display: block;
+    margin-top: 4px;
 }
 
 .nav-icons {
@@ -55,10 +71,16 @@ body {
     border: none;
     color: white;
     font-size: 1.3rem;
-    padding: 10px 16px;
+    padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
+    transition: all 0.3s;
     position: relative;
+}
+
+.cart-btn:hover, .admin-btn:hover {
+    background: var(--naranja);
+    transform: translateY(-2px);
 }
 
 .cart-count {
@@ -72,21 +94,23 @@ body {
     border-radius: 50%;
 }
 
+/* Contenedor principal - más ancho */
+.contenedor-principal {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Secciones */
 .seccion-contenido {
     display: none;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
+    animation: fadeIn 0.4s ease;
 }
 
 .seccion-contenido.active { display: block; }
 
-.hero {
-    text-align: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(230,126,34,0.1), rgba(230,126,34,0.05));
-    border-radius: 40px;
-    margin-bottom: 2rem;
-}
-
+/* Filtros */
 .filtros {
     display: flex;
     justify-content: center;
@@ -102,19 +126,22 @@ body {
     border-radius: 30px;
     cursor: pointer;
     font-weight: 600;
+    transition: all 0.3s;
+    color: var(--marron-medio);
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
 }
 
 .filtro-btn.active, .filtro-btn:hover {
     background: var(--naranja);
     color: white;
+    border-color: var(--naranja);
 }
 
+/* Grid de productos */
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
 .tarjeta-producto {
@@ -155,6 +182,14 @@ body {
     font-size: 1.2rem;
     font-weight: bold;
     margin: 0 0 0.5rem 0;
+    color: var(--marron-oscuro);
+}
+
+.producto-descripcion {
+    font-size: 0.85rem;
+    color: var(--marron-medio);
+    margin-bottom: 1rem;
+    line-height: 1.4;
 }
 
 .producto-precio {
@@ -173,8 +208,16 @@ body {
     font-weight: bold;
     border-radius: 40px;
     cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
 }
 
+.btn-agregar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(230,126,34,0.4);
+}
+
+/* Carrito */
 .card-carrito {
     background: white;
     border-radius: 28px;
@@ -198,6 +241,12 @@ body {
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: var(--gris);
+}
+
+.carrito-items {
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .carrito-item {
@@ -210,6 +259,15 @@ body {
 
 .carrito-item-info {
     flex: 1;
+}
+
+.carrito-item-nombre {
+    font-weight: bold;
+}
+
+.carrito-item-precio {
+    color: var(--naranja);
+    font-size: 0.9rem;
 }
 
 .carrito-item-cantidad {
@@ -233,6 +291,13 @@ body {
     border: none;
     color: var(--rojo-error);
     cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.carrito-vacio {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gris);
 }
 
 .carrito-resumen {
@@ -253,6 +318,13 @@ body {
     font-size: 1.2rem;
     border-top: 1px solid var(--crema-oscuro);
     padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Formulario cliente */
+.formulario-cliente h3 {
+    margin-bottom: 1rem;
+    color: var(--marron-oscuro);
 }
 
 .campo {
@@ -266,6 +338,12 @@ body {
     border-radius: 16px;
     font-size: 1rem;
     background: var(--crema);
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
+}
+
+.campo input:focus, .campo textarea:focus {
+    outline: none;
+    border-color: var(--naranja);
 }
 
 .btn-confirmar {
@@ -278,8 +356,15 @@ body {
     border-radius: 40px;
     font-size: 1.1rem;
     cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
 }
 
+.btn-confirmar:hover {
+    transform: translateY(-2px);
+}
+
+/* Admin - tarjetas de pedidos */
 .tarjetas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -292,14 +377,50 @@ body {
     padding: 1rem;
     border-left: 4px solid var(--naranja);
     box-shadow: var(--sombra-suave);
+    display: flex;
+    gap: 1rem;
+}
+
+.tarjeta-pedido-admin .pedido-imagen {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: var(--crema-oscuro);
+}
+
+.tarjeta-pedido-admin .pedido-info {
+    flex: 1;
+}
+
+.tarjeta-pedido-admin .pedido-info strong {
+    color: var(--marron-oscuro);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.tarjeta-pedido-admin .pedido-info div {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .tarjeta-pedido-admin .fecha {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--gris);
-    margin-top: 0.5rem;
+    margin-top: 6px;
 }
 
+.cargando-tarjetas, .sin-pedidos {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gris);
+    grid-column: 1 / -1;
+}
+
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -319,6 +440,7 @@ body {
     border-radius: 28px;
     text-align: center;
     max-width: 400px;
+    animation: slideIn 0.3s;
 }
 
 .modal-contenido button {
@@ -329,13 +451,55 @@ body {
     border-radius: 40px;
     color: white;
     cursor: pointer;
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
     .productos-grid {
         grid-template-columns: 1fr;
     }
+    
     .navbar {
         flex-direction: column;
+        text-align: center;
+        padding: 1rem 4%;
     }
+    
+    .contenedor-principal {
+        padding: 0 1rem;
+    }
+    
+    .logo-texto {
+        font-size: 2rem;
+    }
+    
+    .slogan {
+        font-size: 0.75rem;
+    }
+    
+    .cart-btn, .admin-btn {
+        padding: 8px 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .contenedor-principal {
+        padding: 0 3rem;
+    }
+    
+    .navbar {
+        padding: 1rem 8%;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
