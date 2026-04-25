@@ -23,7 +23,7 @@ body {
     color: var(--marron-oscuro);
 }
 
-/* Navbar */
+/* Navbar fijo */
 .navbar {
     background: linear-gradient(135deg, var(--marron-oscuro) 0%, var(--marron-medio) 100%);
     padding: 1rem 6%;
@@ -32,20 +32,22 @@ body {
     align-items: center;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: var(--sombra);
     flex-wrap: wrap;
     gap: 1rem;
+    width: 100%;
 }
 
 .nav-logo {
     color: var(--naranja);
     font-weight: bold;
     cursor: pointer;
+    margin-top: 0.8rem;
 }
 
 .logo-texto {
-    font-size: 3rem;
+    font-size: 3rem;          /* Tamaño escritorio */
     line-height: 1.2;
 }
 
@@ -64,7 +66,7 @@ body {
     gap: 1rem;
 }
 
-.cart-btn, .admin-btn {
+.cart-btn {
     background: rgba(255,255,255,0.1);
     border: none;
     color: white;
@@ -76,7 +78,7 @@ body {
     position: relative;
 }
 
-.cart-btn:hover, .admin-btn:hover {
+.cart-btn:hover {
     background: var(--naranja);
     transform: translateY(-2px);
 }
@@ -378,7 +380,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Admin - tarjetas de pedidos */
+/* Admin - tarjetas de pedidos (solo admin.html) */
 .tarjetas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -474,21 +476,38 @@ body {
         grid-template-columns: 1fr;
     }
     .navbar {
-        flex-direction: column;
+        position: sticky;          /* Mantener fijo también en móvil */
+        justify-content: center;
+        padding: 0.8rem 4%;
+    }
+    .nav-logo {
+        margin: 0 auto;
         text-align: center;
-        padding: 1rem 4%;
+        margin-top: 0.5rem;
+    }
+    .nav-icons {
+        position: absolute;
+        right: 4%;
+        top: 50%;
+        transform: translateY(-50%);
     }
     .contenedor-principal {
         padding: 0 1rem;
     }
     .logo-texto {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     .slogan {
-        font-size: 0.75rem;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
     }
-    .cart-btn, .admin-btn {
-        padding: 8px 16px;
+    .cart-btn {
+        padding: 6px 12px;
+        font-size: 1.2rem;
+    }
+    .cart-count {
+        font-size: 0.6rem;
+        padding: 1px 5px;
     }
 }
 
