@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Amasador | Delivery de Empanadas</title>
-    <!-- Fuente Sniglet desde Google Fonts -->
+    <!-- Fuente Sniglet -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sniglet&display=swap" rel="stylesheet">
-    <!-- Favicon para evitar error 404 (ícono por defecto) -->
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥟</text></svg>">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -40,9 +40,9 @@
         <div class="filtros">
             <button class="filtro-btn active" data-categoria="todos">Todos</button>
             <button class="filtro-btn" data-categoria="empanadas">Empanadas</button>
-            <button class="filtro-btn" data-categoria="panes">Panes</button>
-            <button class="filtro-btn" data-categoria="postres">Postres</button>
-            <button class="filtro-btn" data-categoria="combos">Combos</button>
+            <button class="filtro-btn" data-categoria="bebidas">Bebidas</button>
+            <button class="filtro-btn" data-categoria="bocaditos">Bocaditos</button>
+            <button class="filtro-btn" data-categoria="otros">Otros</button>
         </div>
         
         <div id="productos-grid" class="productos-grid"></div>
@@ -55,45 +55,19 @@
                 <h2><i class="fas fa-shopping-bag"></i> Tu pedido</h2>
                 <button class="close-carrito" id="close-carrito"><i class="fas fa-times"></i></button>
             </div>
-            <div id="carrito-items" class="carrito-items">
-                <div class="carrito-vacio">
-                    <i class="fas fa-shopping-cart"></i>
-                    <p>Tu carrito está vacío</p>
-                    <button class="btn-seguir-comprando" id="seguir-comprando">Ver empanadas</button>
-                </div>
-            </div>
+            <div id="carrito-items" class="carrito-items"></div>
             <div class="carrito-resumen">
-                <div class="resumen-linea">
-                    <span>Subtotal:</span>
-                    <span id="subtotal">S/ 0.00</span>
-                </div>
-                <div class="resumen-linea">
-                    <span>Delivery:</span>
-                    <span id="delivery">S/ 5.00</span>
-                </div>
-                <div class="resumen-linea total">
-                    <span>Total:</span>
-                    <span id="total-carrito">S/ 0.00</span>
-                </div>
+                <div class="resumen-linea"><span>Subtotal:</span><span id="subtotal">S/ 0.00</span></div>
+                <div class="resumen-linea"><span>Delivery:</span><span id="delivery">S/ 5.00</span></div>
+                <div class="resumen-linea total"><span>Total:</span><span id="total-carrito">S/ 0.00</span></div>
             </div>
-            
             <form id="formulario-cliente" class="formulario-cliente">
                 <h3><i class="fas fa-user"></i> Datos de envío</h3>
-                <div class="campo">
-                    <input type="text" id="cliente-nombre" placeholder="Nombre completo" required>
-                </div>
-                <div class="campo">
-                    <input type="text" id="cliente-direccion" placeholder="Dirección de entrega" required>
-                </div>
-                <div class="campo">
-                    <input type="tel" id="cliente-telefono" placeholder="Teléfono / WhatsApp" required>
-                </div>
-                <div class="campo">
-                    <textarea id="cliente-notas" placeholder="Notas adicionales (piso, referencia, etc.)" rows="2"></textarea>
-                </div>
-                <button type="submit" class="btn-confirmar" id="btn-confirmar">
-                    <i class="fas fa-check-circle"></i> Confirmar pedido
-                </button>
+                <div class="campo"><input type="text" id="cliente-nombre" placeholder="Nombre completo" required></div>
+                <div class="campo"><input type="text" id="cliente-direccion" placeholder="Dirección de entrega" required></div>
+                <div class="campo"><input type="tel" id="cliente-telefono" placeholder="Teléfono / WhatsApp" required></div>
+                <div class="campo"><textarea id="cliente-notas" placeholder="Notas adicionales" rows="2"></textarea></div>
+                <button type="submit" class="btn-confirmar" id="btn-confirmar"><i class="fas fa-check-circle"></i> Confirmar pedido</button>
             </form>
         </div>
     </section>
@@ -103,13 +77,9 @@
         <div class="card card-wide">
             <header class="card-header-flex">
                 <h2><i class="fas fa-clipboard-list"></i> Pedidos recibidos</h2>
-                <button class="btn-secondary" id="btn-refrescar">
-                    <i class="fas fa-sync-alt"></i> Refrescar
-                </button>
+                <button class="btn-secondary" id="btn-refrescar"><i class="fas fa-sync-alt"></i> Refrescar</button>
             </header>
-            <div id="tarjetas-pedidos" class="tarjetas-grid">
-                <div class="cargando-tarjetas">Cargando pedidos...</div>
-            </div>
+            <div id="tarjetas-pedidos" class="tarjetas-grid"><div class="cargando-tarjetas">Cargando pedidos...</div></div>
         </div>
     </section>
 </main>
@@ -118,7 +88,7 @@
     <div class="modal-contenido">
         <i class="fas fa-check-circle" style="font-size: 60px; color: #27ae60;"></i>
         <h3>¡Pedido recibido!</h3>
-        <p>Gracias por tu compra. En breve nos comunicaremos contigo para confirmar el envío.</p>
+        <p>Gracias por tu compra. En breve nos comunicaremos contigo.</p>
         <button id="cerrar-modal">Seguir comprando</button>
     </div>
 </div>

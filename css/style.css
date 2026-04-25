@@ -23,7 +23,7 @@ body {
     color: var(--marron-oscuro);
 }
 
-/* Navbar - más ancho y menos pegado a bordes */
+/* Navbar */
 .navbar {
     background: linear-gradient(135deg, var(--marron-oscuro) 0%, var(--marron-medio) 100%);
     padding: 1rem 6%;
@@ -38,7 +38,6 @@ body {
     gap: 1rem;
 }
 
-/* Logo más grande: 3rem en desktop */
 .nav-logo {
     color: var(--naranja);
     font-weight: bold;
@@ -52,8 +51,7 @@ body {
 
 .slogan {
     font-size: 0.9rem;
-    font-weight: normal;
-    font-style: italic;          /* Cursiva */
+    font-style: italic;
     letter-spacing: 1px;
     color: var(--crema);
     text-transform: none;
@@ -94,7 +92,7 @@ body {
     border-radius: 50%;
 }
 
-/* Contenedor principal - más ancho */
+/* Contenedor principal */
 .contenedor-principal {
     max-width: 1400px;
     margin: 0 auto;
@@ -255,6 +253,22 @@ body {
     gap: 1rem;
     padding: 1rem;
     border-bottom: 1px solid var(--crema-oscuro);
+}
+
+.carrito-item-imagen {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--crema-oscuro);
+    flex-shrink: 0;
+}
+
+.carrito-item-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .carrito-item-info {
@@ -459,25 +473,20 @@ body {
     .productos-grid {
         grid-template-columns: 1fr;
     }
-    
     .navbar {
         flex-direction: column;
         text-align: center;
         padding: 1rem 4%;
     }
-    
     .contenedor-principal {
         padding: 0 1rem;
     }
-    
     .logo-texto {
         font-size: 2rem;
     }
-    
     .slogan {
         font-size: 0.75rem;
     }
-    
     .cart-btn, .admin-btn {
         padding: 8px 16px;
     }
@@ -487,13 +496,11 @@ body {
     .contenedor-principal {
         padding: 0 3rem;
     }
-    
     .navbar {
         padding: 1rem 8%;
     }
 }
 
-/* Animaciones */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
