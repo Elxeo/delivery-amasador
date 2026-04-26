@@ -63,7 +63,7 @@ function actualizarCarritoUI() {
     subtotalSpan.textContent = `S/ ${subtotal.toFixed(2)}`;
     totalCarritoSpan.textContent = `S/ ${total.toFixed(2)}`;
     if (carrito.length === 0) {
-        carritoItems.innerHTML = `<div class="carrito-vacio"><p>Tu carrito está vacío</p><button onclick="mostrarSeccion('seccion-tienda')">Ver productos</button></div>`;
+        git 
         return;
     }
     carritoItems.innerHTML = carrito.map(item => `
