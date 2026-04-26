@@ -21,6 +21,8 @@ body {
     background: linear-gradient(135deg, var(--crema) 0%, #f0e4d0 100%);
     min-height: 100vh;
     color: var(--marron-oscuro);
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navbar fijo */
@@ -47,7 +49,7 @@ body {
 }
 
 .logo-texto {
-    font-size: 3rem;          /* Tamaño escritorio */
+    font-size: 3rem;
     line-height: 1.2;
 }
 
@@ -99,6 +101,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    flex: 1;
 }
 
 /* Secciones */
@@ -140,8 +143,26 @@ body {
 /* Grid de productos */
 .productos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+    .productos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .tarjeta-producto {
@@ -217,16 +238,18 @@ body {
     box-shadow: 0 4px 12px rgba(230,126,34,0.4);
 }
 
-/* Carrito */
+/* Carrito - ancho completo en escritorio y móvil */
 .card-carrito {
     background: white;
     border-radius: 28px;
-    padding: 1.5rem;
-    max-width: 800px;
+    padding: 2rem;
+    width: 100%;
+    max-width: none;        /* Elimina el límite de ancho */
     margin: 0 auto;
     box-shadow: var(--sombra);
 }
 
+/* El resto de estilos del carrito se mantienen */
 .carrito-header {
     display: flex;
     justify-content: space-between;
@@ -380,7 +403,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* Admin - tarjetas de pedidos (solo admin.html) */
+/* Admin - tarjetas de pedidos */
 .tarjetas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -470,13 +493,38 @@ body {
     font-family: 'Sniglet', 'Segoe UI', sans-serif;
 }
 
-/* Responsive */
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--marron-oscuro) 0%, var(--marron-medio) 100%);
+    color: var(--crema);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--naranja);
+}
+
+.footer-contenido p {
+    margin: 0.3rem 0;
+}
+
+.creditos {
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.creditos strong {
+    color: var(--naranja);
+    font-weight: bold;
+}
+
+/* Responsive general */
 @media (max-width: 768px) {
     .productos-grid {
         grid-template-columns: 1fr;
     }
     .navbar {
-        position: sticky;          /* Mantener fijo también en móvil */
+        position: sticky;
         justify-content: center;
         padding: 0.8rem 4%;
     }
@@ -508,6 +556,16 @@ body {
     .cart-count {
         font-size: 0.6rem;
         padding: 1px 5px;
+    }
+    /* Carrito en móvil: ocupa todo el ancho */
+    .card-carrito {
+        padding: 1rem;
+        width: 100%;
+    }
+    .footer {
+        padding: 1rem;
+        font-size: 0.75rem;
+        margin-top: 2rem;
     }
 }
 
