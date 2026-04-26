@@ -27,6 +27,9 @@ async function cargarPedidosAdmin() {
         }
         const pedidosRecientes = pedidos.slice().reverse();
         const tarjetas = pedidosRecientes.map(p => {
+            // Depuración: muestra la fecha en consola
+            console.log("Fecha del pedido:", p.fecha);
+            
             let productosArray = [], primerProducto = null;
             try { productosArray = JSON.parse(p.productos || '[]'); if (productosArray.length) primerProducto = productosArray[0]; } catch(e) {}
             const listaProductos = productosArray.map(item => `${item.cantidad}x ${item.nombre}`).join(', ');
@@ -53,9 +56,30 @@ async function cargarPedidosAdmin() {
 }
 
 function escapeHtml(str) { if (str == null) return ''; return String(str).replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m])); }
-function formatearFecha(fechaStr) { try { return new Date(fechaStr).toLocaleString('es-PE'); } catch(e) { return fechaStr; } }
 
-// Autenticación al cargar la página
+function formatearFecha(fechaStr) {
+    if (fechaStr == null || fechaStr === "") {
+        return "⚠️ Sin fecha";
+    }
+    let fecha;
+    if (typeof fechaStr === "string" && !isNaN(Number(fechaStr))) {
+        fecha = new Date(Number(fechaStr));
+    } else {
+        fecha = new Date(fechaStr);
+    }
+    if (isNaN(fecha.getTime())) {
+        console.warn("Fecha inválida recibida:", fechaStr);
+        return `📅 ${fechaStr}`;
+    }
+    return fecha.toLocaleString('es-PE', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
 function autenticar() {
     const claveIngresada = prompt("Ingrese la clave de administrador:");
     if (claveIngresada === CLAVE_ADMIN) {
@@ -67,9 +91,7 @@ function autenticar() {
     }
 }
 
-// Evento del botón refrescar (solo si existe)
 const btnRefrescar = document.getElementById('btn-refrescar');
 if (btnRefrescar) btnRefrescar.onclick = () => { if (adminAutenticado) cargarPedidosAdmin(); };
 
-// Iniciar autenticación
 autenticar();
