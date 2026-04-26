@@ -96,11 +96,12 @@ body {
     border-radius: 50%;
 }
 
-/* Contenedor principal */
+/* Contenedor principal fluido */
 .contenedor-principal {
-    max-width: 1400px;
+    width: 95%;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1rem;
     flex: 1;
 }
 
@@ -140,7 +141,7 @@ body {
     border-color: var(--naranja);
 }
 
-/* Grid de productos */
+/* Productos grid */
 .productos-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -238,18 +239,16 @@ body {
     box-shadow: 0 4px 12px rgba(230,126,34,0.4);
 }
 
-/* Carrito - ancho completo en escritorio y móvil */
+/* Carrito centrado al 50% */
 .card-carrito {
     background: white;
     border-radius: 28px;
     padding: 2rem;
-    width: 100%;
-    max-width: none;        /* Elimina el límite de ancho */
+    width: 50%;
     margin: 0 auto;
     box-shadow: var(--sombra);
 }
 
-/* El resto de estilos del carrito se mantienen */
 .carrito-header {
     display: flex;
     justify-content: space-between;
@@ -459,7 +458,7 @@ body {
     grid-column: 1 / -1;
 }
 
-/* Modal */
+/* Modal de éxito */
 .modal {
     display: none;
     position: fixed;
@@ -518,7 +517,39 @@ body {
     font-weight: bold;
 }
 
-/* Responsive general */
+/* ========== BOTONES UNIFICADOS ========== */
+.btn-secondary,
+.btn-seguir-comprando {
+    background: var(--naranja);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Sniglet', 'Segoe UI', sans-serif;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-secondary:hover,
+.btn-seguir-comprando:hover {
+    background: var(--naranja-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230,126,34,0.4);
+}
+
+/* Ajustes específicos */
+.carrito-vacio .btn-seguir-comprando {
+    margin-top: 1rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .productos-grid {
         grid-template-columns: 1fr;
@@ -540,6 +571,7 @@ body {
         transform: translateY(-50%);
     }
     .contenedor-principal {
+        width: 100%;
         padding: 0 1rem;
     }
     .logo-texto {
@@ -557,10 +589,15 @@ body {
         font-size: 0.6rem;
         padding: 1px 5px;
     }
-    /* Carrito en móvil: ocupa todo el ancho */
     .card-carrito {
+        width: 95%;
+        margin: 0 auto;
         padding: 1rem;
-        width: 100%;
+    }
+    .btn-secondary,
+    .btn-seguir-comprando {
+        padding: 8px 18px;
+        font-size: 0.9rem;
     }
     .footer {
         padding: 1rem;
@@ -570,9 +607,6 @@ body {
 }
 
 @media (min-width: 1200px) {
-    .contenedor-principal {
-        padding: 0 3rem;
-    }
     .navbar {
         padding: 1rem 8%;
     }
